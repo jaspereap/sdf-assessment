@@ -36,7 +36,7 @@ public class Client {
             String line;
             while (!close) {
                 line = br.readLine().trim();
-                System.out.println("Line from server: "+line);
+                // System.out.println("Line from server: "+line);
                 // process line
                 String[] tokens = line.split(":");
                 for (int i = 0; i < tokens.length; i++) {
@@ -58,24 +58,36 @@ public class Client {
                         // check if item count matches item_count
                         if (request.endRequest()) {
                             close = true;
-                            System.out.println("=======Ending request==========");
+                            // System.out.println("=======Ending request==========");
                         }
                         break;
                     }
                     default: System.out.println("Line cannot be read, ignore: " + directive); break;
                 }
-                System.out.println(directive);
-                System.out.println("\tRequest ID: "+request.getRequest_id());
-                System.out.println("\tItem Count: "+request.getItem_count());
-                System.out.println("\tBudget: "+request.getBudget());
-                System.out.println("\tItem prod id: " + item.getProd_id());
-                System.out.println("\tItem title: "+item.getTitle());
-                System.out.println("\titem price: "+item.getPrice());
-                System.out.println("\titem rating: "+item.getRating());
-                System.out.println("Item list size: " + request.getItemList().size());
+                // System.out.println(directive);
+                // System.out.println("\tRequest ID: "+request.getRequest_id());
+                // System.out.println("\tItem Count: "+request.getItem_count());
+                // System.out.println("\tBudget: "+request.getBudget());
+                // System.out.println("\tItem prod id: " + item.getProd_id());
+                // System.out.println("\tItem title: "+item.getTitle());
+                // System.out.println("\titem price: "+item.getPrice());
+                // System.out.println("\titem rating: "+item.getRating());
+                // System.out.println("Item list size: " + request.getItemList().size());
             }
             System.out.println("Completed parsing information from server.");
             PurchaseDecision purchaseDecision = new PurchaseDecision(request.getItemList(), request.getBudget());
+            List<Item> cart = purchaseDecision.selectItems();
+
+            Response responseToServer = new Response(
+                request.getRequest_id(),
+                Constants.NAME,
+                Constants.EMAIL,
+                cart,
+                purchaseDecision.getSpent(),
+                request.getBudget()
+            );
+
+
 
             // Temp
             bw.write("request_id: " + request.getRequest_id() + "\n");

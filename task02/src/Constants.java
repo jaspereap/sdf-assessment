@@ -10,4 +10,7 @@ public class Constants {
     public static final String PRICE = "price";
     public static final String RATING = "rating";
     
+    public static final String NAME = "Eap Wei Hang, Jasper";
+    public static final String EMAIL = "jaspereap@gmail.com";
+    
 }
