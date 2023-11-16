@@ -19,9 +19,9 @@ task01
 task02
     L src
         L Client.java (main)
-        L Request.java
+        L RequestHandler.java
         L PurchaseDecision.java
-        L Response.java
+        L ResponseBuilder.java
         L Item.java
         L Constants.java
     L task02-server.jar
