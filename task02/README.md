@@ -4,7 +4,7 @@ Objective: After receiving a list of items from server, process and make purchas
 # Run Instructions
 ## Compile
 `javac -d task02/classes task02/src/*.java`
-## Run
+## Run Client
 `java -cp task02/classes Client`
 
 or
@@ -14,6 +14,13 @@ or
 or
 
 `java -cp task02/classes Client <Host> <Port>`
+
+## Run Server
+`java -jar task02-server.jar`
+
+or
+
+`java -jar task02-server.jar <Port>`
 
 # Expected Output
 ```
