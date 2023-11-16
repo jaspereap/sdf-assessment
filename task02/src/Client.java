@@ -65,6 +65,7 @@ public class Client {
                     default: System.out.println("Line cannot be read, ignore: " + directive); break;
                 }
             }
+
             System.out.println("Completed parsing information from server.");
             PurchaseDecision purchaseDecision = new PurchaseDecision(request.getItemList(), request.getBudget());
             List<Item> cart = purchaseDecision.selectItems();
@@ -79,7 +80,7 @@ public class Client {
             );
 
             String response = responseToServer.getResponse();
-            System.out.println(response);
+            // System.out.println(response);
 
             bw.write(response);
             bw.flush();
@@ -87,11 +88,13 @@ public class Client {
             line = br.readLine();
             System.out.println(line);
 
-
-            // Temp
-            // bw.write("request_id: " + request.getRequest_id() + "\n");
-            // bw.write("client_end\n");
-            // bw.flush();
+            // Close connections
+            bw.close();
+            osw.close();
+            os.close();
+            br.close();
+            isr.close();
+            is.close();
         } catch (IOException ie) {
             ie.printStackTrace();
         }
