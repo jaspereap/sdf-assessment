@@ -66,6 +66,7 @@ public class Client {
             }
 
             System.out.println("Completed parsing information from server.");
+            // PurchaseDecision decides items to purchase
             PurchaseDecision purchaseDecision = new PurchaseDecision(request.getItemList(), request.getBudget());
             List<Item> cart = purchaseDecision.selectItems();
 
