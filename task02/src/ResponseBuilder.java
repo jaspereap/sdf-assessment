@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Response {
+public class ResponseBuilder {
     String request_id;
     String name;
     String email;
@@ -10,7 +10,7 @@ public class Response {
     float budget;
     String response = "";
 
-    public Response(String request_id, String name, String email, List<Item> rawItems, float spent, float budget) {
+    public ResponseBuilder(String request_id, String name, String email, List<Item> rawItems, float spent, float budget) {
         this.request_id = request_id;
         this.name = name;
         this.email = email;

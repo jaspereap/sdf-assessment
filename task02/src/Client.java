@@ -28,7 +28,7 @@ public class Client {
             OutputStreamWriter osw = new OutputStreamWriter(os);
             BufferedWriter bw = new BufferedWriter(osw);
 
-            Request request = new Request();
+            RequestHandler request = new RequestHandler();
             Item item = new Item();
 
             boolean close = false;
@@ -69,7 +69,7 @@ public class Client {
             PurchaseDecision purchaseDecision = new PurchaseDecision(request.getItemList(), request.getBudget());
             List<Item> cart = purchaseDecision.selectItems();
 
-            Response responseToServer = new Response(
+            ResponseBuilder responseToServer = new ResponseBuilder(
                 request.getRequest_id(),
                 Constants.NAME_DATA,
                 Constants.EMAIL_DATA,

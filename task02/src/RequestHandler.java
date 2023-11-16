@@ -1,16 +1,12 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class Request {
+public class RequestHandler {
     List<Item> itemList = new LinkedList<>();
     String request_id;
     int item_count;
     float budget;
-
-    public Request() {
-
-    }
-
+    
     public boolean endRequest() {
         boolean end = false;
 

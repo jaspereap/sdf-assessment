@@ -9,6 +9,7 @@ public class PurchaseDecision {
     List<Item> cart;
     float budget;
     float spent;
+    
     public PurchaseDecision(List<Item> itemList, float budget) {
         this.itemList = itemList;
         this.budget = budget;
@@ -39,16 +40,6 @@ public class PurchaseDecision {
         .sorted(Comparator.comparing(Item::getRating)
                             .thenComparing(Item::getPrice))
         .collect(Collectors.toList());
-    }
-
-    public void printItemList(List<Item> list) {
-        System.out.println("Budget: " + this.budget);
-        System.out.println("Current item list: ");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getTitle());
-            System.out.println("\tRating: "+list.get(i).getRating());
-            System.out.println("\tPrice: "+list.get(i).getPrice());
-        }
     }
 
     public float getSpent() {
