@@ -11,6 +11,21 @@ public class Request {
 
     }
 
+    public boolean endRequest() {
+        boolean end = false;
+
+        int curr_count;
+        if (itemList.isEmpty()) {
+            curr_count = 0;
+        } else {
+            curr_count = itemList.size();
+        }
+
+        if (curr_count == item_count) {
+            end = true;
+        }
+        return end;
+    }
     public void addItem(Item item) {
         itemList.add(item);
     }

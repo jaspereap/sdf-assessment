@@ -20,7 +20,6 @@ public class Client {
             case 2: server = args[0]; port = Integer.parseInt(args[1]); break;
         }
 
-
         try (Socket socket = new Socket(server, port)) {
             System.out.println("Connected to server");
             InputStream is = socket.getInputStream();
@@ -33,10 +32,11 @@ public class Client {
             Request request = new Request();
             Item item = new Item();
 
+            boolean close = false;
             String line;
-            while (true) {
+            while (!close) {
                 line = br.readLine().trim();
-                // System.out.println(line);
+                System.out.println("Line from server: "+line);
                 // process line
                 String[] tokens = line.split(":");
                 for (int i = 0; i < tokens.length; i++) {
@@ -55,6 +55,11 @@ public class Client {
                     case Constants.RATING: item.setRating(Float.parseFloat(tokens[1])); break;
                     case Constants.PROD_END: {
                         request.addItem(item);
+                        // check if item count matches item_count
+                        if (request.endRequest()) {
+                            close = true;
+                            System.out.println("=======Ending request==========");
+                        }
                         break;
                     }
                     default: System.out.println("Line cannot be read, ignore: " + directive); break;
@@ -69,6 +74,13 @@ public class Client {
                 System.out.println("\titem rating: "+item.getRating());
                 System.out.println("Item list size: " + request.getItemList().size());
             }
+            System.out.println("Completed parsing information from server.");
+            PurchaseDecision purchaseDecision = new PurchaseDecision(request.getItemList(), request.getBudget());
+
+            // Temp
+            bw.write("request_id: " + request.getRequest_id() + "\n");
+            bw.write("client_end\n");
+            bw.flush();
         } catch (IOException ie) {
             ie.printStackTrace();
         }
