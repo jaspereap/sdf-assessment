@@ -39,6 +39,9 @@ public class Category {
         return appList.size();
     }
 
+    public int getDiscarded() {
+        return invalidCount;
+    }
     public ArrayList<String> getLowestRating() {
         ArrayList<String> lowestRating = new ArrayList<>();
         App lowestApp = null;

@@ -6,10 +6,11 @@ public class Processor {
     
     HashMap<String, Category> mapOfCategories = new HashMap<>();
     HashMap<String, Category> cleanedMap = new HashMap<>();
+    int lineCount = 0;
 
     public void parse(String line) {
         line = line.trim().toUpperCase();
-        // System.out.println("Current line: " + line);
+        lineCount++;
         String[] fields = line.split(",");
 
         String category = fields[FieldConstants.CATEGORY];
@@ -39,6 +40,7 @@ public class Processor {
                 // System.out.println(a.getRating());
                 if (!"NAN".equals(app.getRating())) {
                     cleanedMap.get(categoryName).addToList(app);
+                } else {
                     cleanedMap.get(categoryName).addInvalidCount();
                 }
             }

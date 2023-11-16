@@ -14,8 +14,8 @@ public class Main {
         try {
             FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine();
-            line = br.readLine();
+            
+            String line = br.readLine(); // skip header line
             while ((line = br.readLine()) != null) {
                 if (line.isEmpty()) {
                     continue;
@@ -36,7 +36,9 @@ public class Main {
             System.out.println("  Lowest: " + currentCategory.getLowestRating().get(0) + ", "+ currentCategory.getLowestRating().get(1));
             System.out.println("  Average: " + currentCategory.getAverageRating());
             System.out.println("  Count: " + currentCategory.getCount());
+            System.out.println("  Discarded: " + currentCategory.getDiscarded());
         }
+        System.out.println("Total lines in file: " + processor.lineCount);
 
     }
 }
