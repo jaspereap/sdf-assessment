@@ -14,3 +14,12 @@ or
 or
 
 `java -cp task02/classes Client <Host> <Port>`
+
+# Expected Output
+```
+Connected to server
+Completed parsing information from server.
+Generating response for server....
+Sending response to server..
+success
+```
