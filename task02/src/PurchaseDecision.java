@@ -18,21 +18,14 @@ public class PurchaseDecision {
     public List<Item> selectItems() {
         cart = new LinkedList<>();
         float totalCost = 0;
-        // System.out.println("printing from select items");
         for (int i = sortedItemList.size() - 1; i >= 0; i--) {
-            float itemRating = sortedItemList.get(i).getRating();
             float itemPrice = sortedItemList.get(i).getPrice();
-            // System.out.println("\tBudget: " + budget);
-            // System.out.println("\tItem rating: " + itemRating);
-            // System.out.println("\tItem price: " + itemPrice);
 
             if (itemPrice > budget | (itemPrice + totalCost) > budget) {
                 // System.out.println("===Item out of budget===");
                 continue;
             }
             totalCost += itemPrice;
-            // System.out.println("\tTotal cost: " + totalCost);
-            // System.out.println("Adding item to cart: " + sortedItemList.get(i).getTitle());
             cart.add(sortedItemList.get(i));
         }
         spent = totalCost;

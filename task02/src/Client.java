@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Client {
@@ -80,8 +79,8 @@ public class Client {
             );
 
             String response = responseToServer.getResponse();
-            // System.out.println(response);
 
+            System.out.println("Sending response to server..");
             bw.write(response);
             bw.flush();
 
