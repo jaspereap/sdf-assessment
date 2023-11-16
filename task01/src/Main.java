@@ -22,6 +22,8 @@ public class Main {
                 }
                 processor.parse(line);
             }
+            br.close();
+            fr.close();
         } catch (IOException ie) {
             ie.printStackTrace();
         }
