@@ -1,0 +1,115 @@
+request_id: 01HFAV154HMHHR7HZ863S74M3A -> random
+item_count: 18 -> random, number of items expected to receive from server
+budget: 2021.25 -> initial budget
+prod_list -> random, start of a list of products
+
+prod_start -> indicate start of a single product description
+prod_id:  18
+title:  MBJ Women's Solid Short Sleeve Boat Neck V 
+price:  9.85
+rating:  4.70
+prod_end -> indicate end of a single product description
+
+
+prod_start
+prod_id:  7
+title:  White Gold Plated Princess
+price:  9.99
+rating:  3.00
+prod_end
+prod_start
+prod_id:  19
+title:  Opna Women's Short Sleeve Moisture
+price:  7.95
+rating:  4.50
+prod_end
+prod_start
+prod_id:  13
+title:  Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin
+price:  599.00
+rating:  2.90
+prod_end
+prod_start
+prod_id:  9
+title:  WD 2TB Elements Portable External Hard Drive - USB 3.0 
+price:  64.00
+rating:  3.30
+prod_end
+prod_start
+prod_id:  6
+title:  Solid Gold Petite Micropave 
+price:  168.00
+rating:  3.90
+prod_end
+prod_start
+prod_id:  5
+title:  John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet
+price:  695.00
+rating:  4.60
+prod_end
+prod_start
+prod_id:  11
+title:  Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5
+price:  109.00
+rating:  4.80
+prod_end
+prod_start
+prod_id:  1
+title:  Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+price:  109.95
+rating:  3.90
+prod_end
+prod_start
+prod_id:  20
+title:  DANVOUY Womens T Shirt Casual Cotton Short
+price:  12.99
+rating:  3.60
+prod_end
+prod_start
+prod_id:  12
+title:  WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive
+price:  114.00
+rating:  4.80
+prod_end
+prod_start
+prod_id:  14
+title:  Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED 
+price:  999.99
+rating:  2.20
+prod_end
+prod_start
+prod_id:  17
+title:  Rain Jacket Women Windbreaker Striped Climbing Raincoats
+price:  39.99
+rating:  3.80
+prod_end
+prod_start
+prod_id:  16
+title:  Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket
+price:  29.95
+rating:  2.90
+prod_end
+prod_start
+prod_id:  3
+title:  Mens Cotton Jacket
+price:  55.99
+rating:  4.70
+prod_end
+prod_start
+prod_id:  4
+title:  Mens Casual Slim Fit
+price:  15.99
+rating:  2.10
+prod_end
+prod_start
+prod_id:  8
+title:  Pierced Owl Rose Gold Plated Stainless Steel Double
+price:  10.99
+rating:  1.90
+prod_end
+prod_start
+prod_id:  15
+title:  BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats
+price:  56.99
+rating:  2.60
+prod_end

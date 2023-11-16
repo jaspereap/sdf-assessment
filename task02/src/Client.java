@@ -64,15 +64,6 @@ public class Client {
                     }
                     default: System.out.println("Line cannot be read, ignore: " + directive); break;
                 }
-                // System.out.println(directive);
-                // System.out.println("\tRequest ID: "+request.getRequest_id());
-                // System.out.println("\tItem Count: "+request.getItem_count());
-                // System.out.println("\tBudget: "+request.getBudget());
-                // System.out.println("\tItem prod id: " + item.getProd_id());
-                // System.out.println("\tItem title: "+item.getTitle());
-                // System.out.println("\titem price: "+item.getPrice());
-                // System.out.println("\titem rating: "+item.getRating());
-                // System.out.println("Item list size: " + request.getItemList().size());
             }
             System.out.println("Completed parsing information from server.");
             PurchaseDecision purchaseDecision = new PurchaseDecision(request.getItemList(), request.getBudget());
@@ -80,19 +71,27 @@ public class Client {
 
             Response responseToServer = new Response(
                 request.getRequest_id(),
-                Constants.NAME,
-                Constants.EMAIL,
+                Constants.NAME_DATA,
+                Constants.EMAIL_DATA,
                 cart,
                 purchaseDecision.getSpent(),
                 request.getBudget()
             );
 
+            String response = responseToServer.getResponse();
+            System.out.println(response);
+
+            bw.write(response);
+            bw.flush();
+
+            line = br.readLine();
+            System.out.println(line);
 
 
             // Temp
-            bw.write("request_id: " + request.getRequest_id() + "\n");
-            bw.write("client_end\n");
-            bw.flush();
+            // bw.write("request_id: " + request.getRequest_id() + "\n");
+            // bw.write("client_end\n");
+            // bw.flush();
         } catch (IOException ie) {
             ie.printStackTrace();
         }

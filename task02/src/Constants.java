@@ -10,7 +10,16 @@ public class Constants {
     public static final String PRICE = "price";
     public static final String RATING = "rating";
     
-    public static final String NAME = "Eap Wei Hang, Jasper";
-    public static final String EMAIL = "jaspereap@gmail.com";
+    public static final String NAME_DATA = "Eap Wei Hang, Jasper";
+    public static final String EMAIL_DATA = "jaspereap@gmail.com";
+
+    public static final String R_NAME = "name";
+    public static final String R_EMAIL = "email";
+    public static final String R_ITEMS = "items";
+    public static final String R_SPENT = "spent";
+    public static final String R_REMAINING = "remaining";
+    public static final String R_END = "client_end";
+
+
     
 }
