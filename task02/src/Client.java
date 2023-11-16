@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Client {
     public static void main(String[] args) {
@@ -17,6 +19,8 @@ public class Client {
             case 1: server = "localhost"; port = Integer.parseInt(args[0]); break;
             case 2: server = args[0]; port = Integer.parseInt(args[1]); break;
         }
+
+
         try (Socket socket = new Socket(server, port)) {
             System.out.println("Connected to server");
             InputStream is = socket.getInputStream();
@@ -25,6 +29,46 @@ public class Client {
             OutputStream os = socket.getOutputStream();
             OutputStreamWriter osw = new OutputStreamWriter(os);
             BufferedWriter bw = new BufferedWriter(osw);
+
+            Request request = new Request();
+            Item item = new Item();
+
+            String line;
+            while (true) {
+                line = br.readLine().trim();
+                // System.out.println(line);
+                // process line
+                String[] tokens = line.split(":");
+                for (int i = 0; i < tokens.length; i++) {
+                    tokens[i] = tokens[i].trim();
+                }
+                String directive = tokens[0];
+                switch (directive) {
+                    case Constants.REQUEST_ID: request.setRequest_id(tokens[1]); break;
+                    case Constants.ITEM_COUNT: request.setItem_count(Integer.parseInt(tokens[1])); break;
+                    case Constants.BUDGET: request.setBudget(Float.parseFloat(tokens[1])); break;
+                    case Constants.PROD_LIST: break;
+                    case Constants.PROD_START: item = new Item(); break;
+                    case Constants.PROD_ID: item.setProd_id(tokens[1]); break;
+                    case Constants.TITLE: item.setTitle(tokens[1]); break;
+                    case Constants.PRICE: item.setPrice(Float.parseFloat(tokens[1])); break;
+                    case Constants.RATING: item.setRating(Float.parseFloat(tokens[1])); break;
+                    case Constants.PROD_END: {
+                        request.addItem(item);
+                        break;
+                    }
+                    default: System.out.println("Line cannot be read, ignore: " + directive); break;
+                }
+                System.out.println(directive);
+                System.out.println("\tRequest ID: "+request.getRequest_id());
+                System.out.println("\tItem Count: "+request.getItem_count());
+                System.out.println("\tBudget: "+request.getBudget());
+                System.out.println("\tItem prod id: " + item.getProd_id());
+                System.out.println("\tItem title: "+item.getTitle());
+                System.out.println("\titem price: "+item.getPrice());
+                System.out.println("\titem rating: "+item.getRating());
+                System.out.println("Item list size: " + request.getItemList().size());
+            }
         } catch (IOException ie) {
             ie.printStackTrace();
         }
