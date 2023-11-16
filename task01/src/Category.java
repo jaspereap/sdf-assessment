@@ -6,7 +6,6 @@ public class Category {
     public int invalidCount = 0;
     
     public void addToList(App app) {
-        // System.out.println("Adding " + app.getName() + " to app list");
         appList.add(app);
     }
 
@@ -64,13 +63,4 @@ public class Category {
     public void addInvalidCount() {
         invalidCount++;
     }
-
-    public void getInfo() {
-        System.out.println("Invalid count: " + invalidCount);
-        for (App a : appList) {
-            String name = a.getName();
-            System.out.println(name);
-        }
-    }
-    
 }

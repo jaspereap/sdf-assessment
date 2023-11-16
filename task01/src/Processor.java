@@ -24,19 +24,16 @@ public class Processor {
         } else if (mapOfCategories.containsKey(category)) {
             mapOfCategories.get(category).addToList(app);
         }
-        
     }
     
+    // Remove NAN lines, accumulate count to Category
     public HashMap<String, Category> clean() {
-        // HashMap<String, Category> cleanedMap = new HashMap<>();
-        
         for (String categoryName : mapOfCategories.keySet()) {
             Category currentCategory = mapOfCategories.get(categoryName);
             LinkedList<App> appList = currentCategory.getAppList();
             cleanedMap.put(categoryName, new Category());
 
             for (App app : appList) {
-                // System.out.println(a.getRating());
                 if (!"NAN".equals(app.getRating())) {
                     cleanedMap.get(categoryName).addToList(app);
                 } else {
@@ -45,15 +42,6 @@ public class Processor {
             }
         }
         return cleanedMap;
-    }
-
-    public void printCurrentMap(String cat) {
-        Category categ = cleanedMap.get(cat);
-        LinkedList<App> applist = categ.getAppList();
-        for (App app : applist) {
-            String name = app.getName();
-            System.out.println(name);
-        }
     }
 
     public HashMap<String, Category> getMapOfCategories() {
