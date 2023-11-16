@@ -12,23 +12,22 @@ public class Processor {
         // System.out.println("Current line: " + line);
         String[] fields = line.split(",");
 
-        for (int i = 0; i < fields.length; i++) {
-            String category = fields[FieldConstants.CATEGORY];
-            String name = fields[FieldConstants.NAME];
-            String rating = fields[FieldConstants.RATING];
-            App app = new App(name, category, rating);
+        String category = fields[FieldConstants.CATEGORY];
+        String name = fields[FieldConstants.NAME];
+        String rating = fields[FieldConstants.RATING];
+        App app = new App(name, category, rating);
 
-            if (!mapOfCategories.containsKey(category)) {
-                Category newCat = new Category();
-                newCat.addToList(app);
-                mapOfCategories.put(category, newCat);
-            } else if (mapOfCategories.containsKey(category)) {
-                mapOfCategories.get(category).addToList(app);
-            }
-        }   
+        if (!mapOfCategories.containsKey(category)) {
+            Category newCat = new Category();
+            newCat.addToList(app);
+            mapOfCategories.put(category, newCat);
+        } else if (mapOfCategories.containsKey(category)) {
+            mapOfCategories.get(category).addToList(app);
+        }
+        
     }
     
-    public void clean() {
+    public HashMap<String, Category> clean() {
         // HashMap<String, Category> cleanedMap = new HashMap<>();
         
         for (String categoryName : mapOfCategories.keySet()) {
@@ -44,9 +43,22 @@ public class Processor {
                 }
             }
         }
-
-        System.out.println(cleanedMap);
+        return cleanedMap;
     }
 
+    public void printCurrentMap(String cat) {
+        Category categ = cleanedMap.get(cat);
+        LinkedList<App> applist = categ.getAppList();
+        for (App app : applist) {
+            String name = app.getName();
+            System.out.println(name);
+        }
+    }
+
+    public HashMap<String, Category> getMapOfCategories() {
+        return mapOfCategories;
+    }
+
+    
 
 }

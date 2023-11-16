@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,16 +15,28 @@ public class Main {
             FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
+            line = br.readLine();
             while ((line = br.readLine()) != null) {
                 if (line.isEmpty()) {
                     continue;
                 }
                 processor.parse(line);
             }
-            processor.clean();
-
         } catch (IOException ie) {
             ie.printStackTrace();
         }
+        // remove invalid ratings
+        HashMap<String, Category> cleanedMap = processor.clean();
+
+        // print each category
+        for (String CATEGORY : cleanedMap.keySet()) {
+            Category currentCategory = cleanedMap.get(CATEGORY);
+            System.out.println("Category: " + CATEGORY);
+            System.out.println("  Highest: " + currentCategory.getHighestRating().get(0) + ", "+ currentCategory.getHighestRating().get(1));
+            System.out.println("  Lowest: " + currentCategory.getLowestRating().get(0) + ", "+ currentCategory.getLowestRating().get(1));
+            System.out.println("  Average: " + currentCategory.getAverageRating());
+            System.out.println("  Count: " + currentCategory.getCount());
+        }
+
     }
 }
